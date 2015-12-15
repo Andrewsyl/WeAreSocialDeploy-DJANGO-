@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+
+        <!-- Modal -->
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title" id="myModalLabel">Last Login: {{ user.last_login }}</h4>
+    </div>
+    <div class="modal-body">
+        <center>
+            {% if user.image %}
+            <img src="{{ user.image.url }}" width="140" height="140" border="0" class="img-circle"></a>
+            {% endif %}
+            <h3 class="media-heading">{{ user.first_name }}
+                <p>
+                    <small>{{ user.hometown }}</small>
+            </h3>
+            </p>
+            <span><strong>Skills: </strong></span>
+            <span class="label label-warning">HTML5/CSS</span>
+            <span class="label label-info">Python</span>
+            <span class="label label-info">Django</span>
+            <span class="label label-success">Javascript</span>
+        </center>
+        <hr>
+        <center>
+            <p class="text-left"><strong>Bio: </strong><br>
+                The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild
+                Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven
+                versalia, put her initial into the belt and made herself on the way. When she reached the first hills of
+                the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the
+                headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question
+                ran over her cheek, then</p>
+            <br>
+        </center>
+    </div>
+    <div class="modal-footer">
+        <center>
+            <a href="/loggedin" class="btn btn-primary" role="button">Update your profile</a>
+            <a href="{% url "cancel_subscription" %}"
+              onclick="return cancelSubscriptionCheck();"
+               class="btn btn-danger">Cancel Subscription</a>
+        </center>
+    </div>
+
+    <script type="text/javascript">
+        function cancelSubscriptionCheck() {
+            if (confirm('Are you sure you would like to cancel your subscription?')) {
+                return True;
+            }
+            return False;
+        }
+    </script>
+
+
+
+{% endblock %}
