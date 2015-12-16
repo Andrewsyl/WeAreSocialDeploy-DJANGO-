@@ -11,7 +11,7 @@ from django.conf import settings
 from .models import User
 import stripe
 import datetime
-import arrow
+#import arrow
 import json
 
 stripe.api_key = settings.STRIPE_SECRET
