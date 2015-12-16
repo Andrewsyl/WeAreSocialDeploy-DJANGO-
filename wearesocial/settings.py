@@ -50,7 +50,7 @@ INSTALLED_APPS = (
     'accounts',
     'stripe',
 )
-INSTALLED_APPS += ('debug_toolbar',)
+#INSTALLED_APPS += ('debug_toolbar',)
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
