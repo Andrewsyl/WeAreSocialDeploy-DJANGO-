@@ -26,7 +26,7 @@ STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_MiuYm3fIZMbubUuRzT
 STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_OGz1QbM0wDI5dpG1K7vWnDNg')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
