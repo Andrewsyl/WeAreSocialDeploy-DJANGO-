@@ -31,4 +31,8 @@ urlpatterns = [
     url(r'^loggedin/$', 'accounts.views.user_profile'),
     url(r'^cancel_subscription/$', cancel_subscription, name='cancel_subscription'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+              + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+    #FORUM
+    # url(r'^formum/', threads.views.forum, name="forum"),

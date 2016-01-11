@@ -27,17 +27,16 @@ class User(AbstractUser):
     stripe_id = models.CharField(max_length=40, default='')
     subscription_end = models.DateTimeField(default=timezone.now())
     hometown = models.CharField(max_length=50)
-    #age = models.IntegerField()
+    bio = models.TextField(max_length=500, blank=True)
+    # age = models.IntegerField()
     image = models.ImageField(upload_to="images", blank=True, null=True)
     objects = AccountUserManager()
 
-
-class UserProfile(models.Model):
+'''class UserProfile(models.Model):
     user = models.OneToOneField(User)
     first_name = models.CharField(max_length=50)
     hometown = models.CharField(max_length=50)
     #age = models.IntegerField()
-    image = models.ImageField(upload_to="images", blank=True, null=True)
+    image = models.ImageField(upload_to="images", blank=True, null=True)'''
 
-
-User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
+User.profile = property(lambda u: User.objects.get_or_create(user=u)[0])

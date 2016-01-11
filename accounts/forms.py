@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from accounts.models import User, UserProfile
+from accounts.models import User
 
-MONTH_CHOICES = [(i, i) for i in xrange(1, 12)]
+MONTH_CHOICES = [(i, i) for i in xrange(1, 13)]
 YEAR_CHOICES = [(i, i) for i in xrange(2015, 2036)]
 
 
@@ -53,4 +53,4 @@ class UserLoginForm(forms.Form):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('first_name', 'hometown', 'image')
+        fields = ('first_name', 'last_name', 'hometown', 'bio', 'image')

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+    {% load static %}
 
     <div class="container">
 
@@ -11,8 +12,10 @@
         <center>
             {% if user.image %}
             <img src="{{ user.image.url }}" width="140" height="140" border="0" class="img-circle"></a>
+                {% else %}
+                <img src="images/defult.jpg" width="140" height="140" border="0" class="img-circle"></a>
             {% endif %}
-            <h3 class="media-heading">{{ user.first_name }}
+            <h3 class="media-heading">{{ user.first_name }} {{ user.last_name }}
                 <p>
                     <small>{{ user.hometown }}</small>
             </h3>
@@ -26,12 +29,7 @@
         <hr>
         <center>
             <p class="text-left"><strong>Bio: </strong><br>
-                The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild
-                Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven
-                versalia, put her initial into the belt and made herself on the way. When she reached the first hills of
-                the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the
-                headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question
-                ran over her cheek, then</p>
+               {{ user.bio }}</p>
             <br>
         </center>
     </div>
@@ -47,9 +45,9 @@
     <script type="text/javascript">
         function cancelSubscriptionCheck() {
             if (confirm('Are you sure you would like to cancel your subscription?')) {
-                return True;
+                return False;
             }
-            return False;
+            return True;
         }
     </script>
 

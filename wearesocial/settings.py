@@ -49,9 +49,14 @@ INSTALLED_APPS = (
     'django_forms_bootstrap',
     'accounts',
     'stripe',
+    'tinymce',
+    'emoticons',
+    'debug_toolbar',
 )
-INSTALLED_APPS += ('debug_toolbar',)
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -62,8 +67,8 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# AUTH_USER_MODEL = 'accounts.User'
-# AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'accounts.backends.EmailAuth')
+#AUTH_USER_MODEL = 'accounts.User'
+#AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'accounts.backends.EmailAuth')
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -112,12 +117,8 @@ WSGI_APPLICATION = 'wearesocial.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wearesocial_production',
-        'USER': 'wearesocial_production_user',
-        'PASSWORD': 'some-password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -140,16 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
-STATIC_ROOT = ''
 
 SITE_URL = 'http://127.0.0.1:8000'
 PAYPAL_NOTIFY_URL = 'http://127.0.0.1/someurl/'
 PAYPAY_RECEIVER_EMAIL = 'andrewsylcostello-facilitator@gmail.com'
-
-try:
-    from local_settings import *
-except:
-    pass
