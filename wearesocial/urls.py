@@ -18,21 +18,29 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from accounts.views import register, login, logout, profile, cancel_subscription
 from django.conf import settings
+from threads.views import threads
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'core.views.get_index', name='home'),
-    url(r'^pages/', include('django.contrib.flatpages.urls')),
-    url(r'^contact/', 'contact.views.contact', name='contact'),
-    url(r'^register/$', register, name='register'),
-    url(r'^login/$', login, name='login'),
-    url(r'^logout/$', logout, name='logout'),
-    url(r'^profile/$', profile, name='profile'),
-    url(r'^loggedin/$', 'accounts.views.user_profile'),
-    url(r'^cancel_subscription/$', cancel_subscription, name='cancel_subscription'),
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
-              + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+                  url(r'^admin/', include(admin.site.urls)),
+                  url(r'^$', 'core.views.get_index', name='home'),
+                  url(r'^pages/', include('django.contrib.flatpages.urls')),
+                  url(r'^contact/', 'contact.views.contact', name='contact'),
+                  url(r'^register/$', register, name='register'),
+                  url(r'^login/$', login, name='login'),
+                  url(r'^logout/$', logout, name='logout'),
+                  url(r'^profile/$', profile, name='profile'),
+                  url(r'^loggedin/$', 'accounts.views.user_profile'),
+                  url(r'^cancel_subscription/$', cancel_subscription, name='cancel_subscription'),
 
-    #FORUM
-    # url(r'^formum/', threads.views.forum, name="forum"),
+                  url(r'^forum/$', 'threads.views.forum'),
+                  url(r'^threads/(?P<subject_id>\d+)/$', 'threads.views.threads', name='threads'),
+                  url(r'^thread/(?P<thread_id>\d+)/$', 'threads.views.thread', name='thread'),
+                  url(r'^post/new/(?P<thread_id>\d+)/$', 'threads.views.new_post', name='new_post'),
+                  url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', 'threads.views.edit_post', name='edit_post'),
+                  url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', 'threads.views.delete_post',
+                      name='delete_post'),
+                  url(r'^new_thread/(?P<subject_id>\d+)/$', 'threads.views.new_thread', name='new_thread'),
+
+                  url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+              + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

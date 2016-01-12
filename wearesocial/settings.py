@@ -28,7 +28,7 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_OGz1QbM0wDI5dpG1K7vWnDNg')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -51,7 +51,8 @@ INSTALLED_APPS = (
     'stripe',
     'tinymce',
     'emoticons',
-    'debug_toolbar',
+    # 'debug_toolbar',
+    'threads',
 )
 
 STATICFILES_DIRS = (
@@ -67,8 +68,8 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-#AUTH_USER_MODEL = 'accounts.User'
-#AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'accounts.backends.EmailAuth')
+# AUTH_USER_MODEL = 'accounts.User'
+# AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'accounts.backends.EmailAuth')
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -117,8 +118,12 @@ WSGI_APPLICATION = 'wearesocial.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'setadbname',
+        'USER': 'setausername',
+        'PASSWORD': 'hello',
+        'HOST': 'localhost',
+        'POST': '5432',
     }
 }
 
@@ -145,3 +150,10 @@ STATIC_URL = '/static/'
 SITE_URL = 'http://127.0.0.1:8000'
 PAYPAL_NOTIFY_URL = 'http://127.0.0.1/someurl/'
 PAYPAY_RECEIVER_EMAIL = 'andrewsylcostello-facilitator@gmail.com'
+
+TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
+
+try:
+    from local_settings import *
+except:
+    pass

@@ -26,9 +26,9 @@ STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_MiuYm3fIZMbubUuRzT
 STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_OGz1QbM0wDI5dpG1K7vWnDNg')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -49,8 +49,12 @@ INSTALLED_APPS = (
     'django_forms_bootstrap',
     'accounts',
     'stripe',
-
+    'tinymce',
+    'emoticons',
+    #'debug_toolbar',
+    'threads',
 )
+
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
@@ -59,8 +63,7 @@ EMAIL_HOST_USER = 'andrewsylcostello@gmail.com  '
 EMAIL_HOST_PASSWORD = 'myahle111'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # AUTH_USER_MODEL = 'accounts.User'
 # AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'accounts.backends.EmailAuth')
@@ -141,11 +144,11 @@ STATICFILES_DIRS = (
 )
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 SITE_URL = 'http://127.0.0.1:8000'
 PAYPAL_NOTIFY_URL = 'http://127.0.0.1/someurl/'
 PAYPAY_RECEIVER_EMAIL = 'andrewsylcostello-facilitator@gmail.com'
 
-try:
-    from local_settings import *
-except:
-    pass
+TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')

@@ -1,0 +1,24 @@
+{% load thread_extras %}
+<div class="details">
+    <div class="colmd6">
+        <div class="pullleft">
+            <time datetime="{{ post.created_at }}">
+                Posted:{{ post.created_at|started_time }}
+            </time>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="pull-right">
+            {% if post.user == useroruser.is_staff %}
+                <a href="{% url 'edit_post' thread.idpost.id %}"><i class="fa fa-pencil-square-o">
+                </i></a>
+                <a href="{% url 'delete_post' post.id %}">
+
+                    <i class="fa fa-trasho"></i>
+                </a>{% endif %}
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+</div>
+</div>

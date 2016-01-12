@@ -33,3 +33,7 @@ body {
     font-size:21px;
     padding:14px 24px;
 }
+
+th {
+    padding-right: 20px;
+}
