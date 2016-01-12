@@ -26,7 +26,7 @@ STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_MiuYm3fIZMbubUuRzT
 STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_OGz1QbM0wDI5dpG1K7vWnDNg')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -54,6 +54,10 @@ INSTALLED_APPS = (
     # 'debug_toolbar',
     'threads',
 )
+<<<<<<< HEAD
+=======
+#INSTALLED_APPS += ('debug_toolbar',)
+>>>>>>> a98935e934e80853c69ca84c2652e1aa24bd7722
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
