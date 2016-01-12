@@ -54,10 +54,10 @@ INSTALLED_APPS = (
     # 'debug_toolbar',
     'threads',
 )
-<<<<<<< HEAD
-=======
+
+
 #INSTALLED_APPS += ('debug_toolbar',)
->>>>>>> a98935e934e80853c69ca84c2652e1aa24bd7722
+
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
