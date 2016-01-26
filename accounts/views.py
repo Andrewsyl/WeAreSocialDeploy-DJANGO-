@@ -11,7 +11,7 @@ from django.conf import settings
 from .models import User
 import stripe
 import datetime
-#import arrow
+import arrow
 import json
 
 stripe.api_key = settings.STRIPE_SECRET
@@ -30,7 +30,7 @@ def register(request):
                     plan='1',
                 )
             except stripe.error.CardError, e:
-                messages.error(request, "Your card was declined, fool!")
+                messages.error(request, "Your card was declined!")
 
             if customer:
                 user = form.save()
@@ -124,6 +124,7 @@ def login(request, success_url=None):
 
 
 @login_required(login_url='/accounts/login/')  # decorator means only allowed if logged in
+
 def profile(request):
     #subscription_humanize = arrow.now(request.user.subscription_end).humanize()
     #joined_humanized = arrow.now(request.user.date_joined).humanize()

@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="{% static "css/font-awesome-4.5.0/css/font-awesome.css" %}">
 
-    {% block head_js %}{% endblock head_js%}
+    {% block head_js %}{% endblock head_js %}
 
 </head>
 
@@ -24,52 +24,53 @@
 
 <div class="container-narrow">
     <div class="masthead">
-    {% if  user.is_authenticated %}
-        <p>Signed in as {{ user.first_name }}</p>
-        <ul class="nav nav-pills pull-right">
-            <li><a href="/">Home</a></li>
-            <li><a href="/pages/about">About</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="{% url 'logout' %}">Log Out</a></li>
-            <li><a href="/forum">Forum</a></li>
-        </ul>
-        {% else  %}
-        <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-            <li><a href="/">Home</a></li>
-            <li><a href="/pages/about">About</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
-            <li><a href="{% url 'register' %}">Join</a></li>
-            <li><a href="{% url 'login' %}">Log In</a></li>
-            <li><a href="/forum">Forum</a></li>
-        </ul>
-    {% endif %}
+        {% if  user.is_authenticated %}
+            <p>Signed in as {{ user.first_name }}</p>
+            <ul class="nav nav-pills pull-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/about">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/forum">Forum</a></li>
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+            </ul>
+        {% else %}
+            <div class="masthead">
+            <ul class="nav nav-pills pull-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/about">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'register' %}">Join</a></li>
+                <li><a href="/forum">Forum</a></li>
+                <li><a href="{% url 'login' %}">Log In</a></li>
+
+            </ul>
+        {% endif %}
 
         <h3><span class="fui-settings-16 muted">Social Entrepreneurship</span></h3>
-    <hr>
-    <div>
-    {% if messages %}
-        <div class="alert alert-success">
-            <div class="messages">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </div>
+        <hr>
+        <div>
+            {% if messages %}
+                <div class="alert alert-success">
+                    <div class="messages">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
         </div>
-    {% endif %}
-    </div>
-    <hr>
-    <div class="container-narrow">
-        {% block content %}
-        {% endblock %}
-    </div>
-    <hr>
-    <div class="footer">
+        <hr>
+        <div class="container-narrow">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <hr>
+        <div class="footer">
 
-        <p>Copyright © 2105<a href="http://www.awwwards.com"> Get Inspired</a>. Made By Bootcampers and Django</p>
-    </div>
-</div>
+            <p>Copyright © 2105<a href="http://www.awwwards.com"> Get Inspired</a>. Made By Bootcampers and Django</p>
+        </div>
+        </div>
     </div>
 </div>
 </body>
