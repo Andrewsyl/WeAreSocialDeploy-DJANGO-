@@ -13,7 +13,7 @@
             {% if user.image %}
             <img src="{{ user.image.url }}" width="140" height="140" border="0" class="img-circle"></a>
                 {% else %}
-                <img src="../media/images/defult.jpg" width="140" height="140" border="0" class="img-circle"></a>
+                <img src="../media/images/defult.jpg" width="240" height="140" border="0" class="img-circle"></a>
             {% endif %}
             <h3 class="media-heading">{{ user.first_name }} {{ user.last_name }}
                 <p>
@@ -21,10 +21,10 @@
             </h3>
             </p>
             <span><strong>Skills: </strong></span>
-            <span class="label label-warning">HTML5/CSS</span>
-            <span class="label label-info">Python</span>
-            <span class="label label-info">Django</span>
-            <span class="label label-success">Javascript</span>
+            <span class="skill label label-warning">{{ user.skill }}</span>
+            <span class="skill label label-info">{{ user.skill2 }}</span>
+            <span class="skill label label-info">{{ user.skill3 }}</span>
+            <span class="skill label label-success">{{ user.skill4 }}</span>
         </center>
         <hr>
         <center>

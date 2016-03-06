@@ -25,7 +25,7 @@
 <div class="container-narrow">
     <div class="masthead">
         {% if  user.is_authenticated %}
-            <p>Signed in as {{ user.first_name }}</p>
+            <p>Signed in as {{ user.username }}</p>
             <ul class="nav nav-pills pull-right">
                 <li><a href="/">Home</a></li>
                 <li><a href="/pages/about">About</a></li>

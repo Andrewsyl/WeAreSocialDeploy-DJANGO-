@@ -99,8 +99,8 @@ def subscriptions_webhook(request):
 
 
 def login(request, success_url=None):
-    if request.user.is_authenticated():
-        return redirect(reverse('profile'))
+    # if request.user.is_authenticated():
+    #     return redirect(reverse('profile'))
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
         if form.is_valid():
@@ -124,7 +124,6 @@ def login(request, success_url=None):
 
 
 @login_required(login_url='/accounts/login/')  # decorator means only allowed if logged in
-
 def profile(request):
     #subscription_humanize = arrow.now(request.user.subscription_end).humanize()
     #joined_humanized = arrow.now(request.user.date_joined).humanize()
@@ -139,22 +138,21 @@ def logout(request):
 
 
 @login_required
-def user_profile(request):
+def edit_profile(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
-            #my_form = form.save(commit=False)
             form.save()
-            #messages.add_message(request, messages.SUCCESS, 'Your message has been sent. Thank you.')
+            messages.add_message(request, messages.SUCCESS, 'Your profile has been updated')
             return HttpResponseRedirect('/profile')
         else:
             #form = ContactView()
             #messages.add_message(request, messages.ERROR, 'Your message not sent. Not enough data')
-            return render(request, 'contact.html', {'form': form})
+            return render(request, 'loggedin.html', {'form': form})
 
     else:
         form = UserProfileForm()
-        return render(request, 'contact.html', {'form': form})
+        return render(request, 'loggedin.html', {'form': form})
 
 
 '''@login_required

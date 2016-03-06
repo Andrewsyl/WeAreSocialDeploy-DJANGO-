@@ -6,7 +6,7 @@
     {{ field.error }}
     {% endfor %}
 
-    <form action="/loggedin" method="post" enctype="multipart/form-data">{% csrf_token %}
+    <form  method="post" enctype="multipart/form-data">{% csrf_token %}
     {{ form|as_bootstrap}}
     <input type="submit" value="Update"/>
     </form>

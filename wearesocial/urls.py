@@ -29,7 +29,7 @@ urlpatterns = [
                   url(r'^login/$', login, name='login'),
                   url(r'^logout/$', logout, name='logout'),
                   url(r'^profile/$', profile, name='profile'),
-                  url(r'^loggedin/$', 'accounts.views.user_profile'),
+                  url(r'^loggedin/$', 'accounts.views.edit_profile'),
                   url(r'^cancel_subscription/$', cancel_subscription, name='cancel_subscription'),
 
                   url(r'^forum/$', 'threads.views.forum'),

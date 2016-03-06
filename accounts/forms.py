@@ -35,7 +35,7 @@ class UserRegistrationForm(UserCreationForm):
         if password1 and password2 and password1 != password2:
             message = "Passwords do not match"
             raise forms.ValidationError(message)
-        return password2
+        #return password1
 
     def save(self, commit=True):
         instance = super(UserRegistrationForm, self).save(commit=False)
@@ -53,4 +53,4 @@ class UserLoginForm(forms.Form):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'hometown', 'bio', 'image')
+        fields = ('first_name', 'last_name', 'hometown', 'bio', 'image', 'skill', 'skill2', 'skill3', 'skill4')

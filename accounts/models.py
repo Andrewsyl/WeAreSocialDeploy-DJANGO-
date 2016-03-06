@@ -28,9 +28,13 @@ class User(AbstractUser):
     subscription_end = models.DateTimeField(default=timezone.now())
     hometown = models.CharField(max_length=50)
     bio = models.TextField(max_length=500, blank=True)
-    # age = models.IntegerField()
+    skill = models.CharField(max_length=40, blank=True)
+    skill2 = models.CharField(max_length=40, blank=True)
+    skill3 = models.CharField(max_length=40, blank=True)
+    skill4 = models.CharField(max_length=40, blank=True)
     image = models.ImageField(upload_to="images", blank=True, null=True)
     objects = AccountUserManager()
+
 
 '''class UserProfile(models.Model):
     user = models.OneToOneField(User)

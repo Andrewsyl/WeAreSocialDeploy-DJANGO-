@@ -54,7 +54,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'andrewsylcostello@gmail.com  '
-EMAIL_HOST_PASSWORD = 'myahle111'
+EMAIL_HOST_PASSWORD = '99099'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 MEDIA_URL = '/media/'
