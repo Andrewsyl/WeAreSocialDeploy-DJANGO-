@@ -109,12 +109,13 @@ def login(request, success_url=None):
 
             if user is not None:
                 auth.login(request, user)
-                messages.error(request, "You have successfully logged in")
+                messages.success(request, "You have successfully logged in")
                 return redirect(reverse('profile'))
             else:
                 form.add_error(None, "Your email or password was not recognised")
+                return render(request, 'login.html', {'form': form})
         else:
-            return render(request, 'contact.html', {'form': form})
+            return render(request, 'login.html', {'form': form})
     else:
         form = UserLoginForm
 
