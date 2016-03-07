@@ -30,7 +30,9 @@ urlpatterns = [
                   url(r'^logout/$', logout, name='logout'),
                   url(r'^profile/$', profile, name='profile'),
                   url(r'^loggedin/$', 'accounts.views.edit_profile'),
+                  url(r'^search/$', 'accounts.views.search_profile'),
                   url(r'^cancel_subscription/$', cancel_subscription, name='cancel_subscription'),
+
 
                   url(r'^forum/$', 'threads.views.forum'),
                   url(r'^threads/(?P<subject_id>\d+)/$', 'threads.views.threads', name='threads'),

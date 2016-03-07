@@ -1,0 +1,13 @@
+{% if results.count > 0 %}
+
+{% for result in results %}
+
+    <li><a href="/profile/{{ result.id }}">{{ result.first_name }}</a> </li>
+
+{% endfor %}
+
+{% else %}
+
+    <p>Naaaathin here mate</p>
+
+{% endif %}

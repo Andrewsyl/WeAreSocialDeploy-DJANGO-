@@ -126,9 +126,9 @@ def login(request, success_url=None):
 
 @login_required(login_url='/accounts/login/')  # decorator means only allowed if logged in
 def profile(request):
-    #subscription_humanize = arrow.now(request.user.subscription_end).humanize()
-    #joined_humanized = arrow.now(request.user.date_joined).humanize()
-    #args = {'subscription_humanize': subscription_humanize, 'joined_humanized': joined_humanized}
+    # subscription_humanize = arrow.now(request.user.subscription_end).humanize()
+    # joined_humanized = arrow.now(request.user.date_joined).humanize()
+    # args = {'subscription_humanize': subscription_humanize, 'joined_humanized': joined_humanized}
     return render(request, 'profile.html')
 
 
@@ -147,13 +147,24 @@ def edit_profile(request):
             messages.add_message(request, messages.SUCCESS, 'Your profile has been updated')
             return HttpResponseRedirect('/profile')
         else:
-            #form = ContactView()
-            #messages.add_message(request, messages.ERROR, 'Your message not sent. Not enough data')
+            # form = ContactView()
+            # messages.add_message(request, messages.ERROR, 'Your message not sent. Not enough data')
             return render(request, 'loggedin.html', {'form': form})
 
     else:
         form = UserProfileForm()
         return render(request, 'loggedin.html', {'form': form})
+
+
+def search_profile(request):
+    if request.method == "POST":
+        search_text = request.POST["search_text"]
+    else:
+        search_text = ''
+
+    profiles = User.objects.filter(first_name__contains=search_text)
+
+    return render_to_response('ajax_search.html', {'results': profiles})
 
 
 '''@login_required
@@ -174,7 +185,6 @@ def user_profile(request):
     args['form'] = form
 
     return render_to_response('loggedin.html', args)'''
-
 
 '''def register(request, register_form=UserRegistrationForm):
     if request.method == 'POST':
