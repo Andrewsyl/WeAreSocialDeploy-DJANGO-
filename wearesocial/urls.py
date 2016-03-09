@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
-from accounts.views import register, login, logout, profile, cancel_subscription
+from accounts.views import register, login, logout, profile, cancel_subscription, otherprofile
 from django.conf import settings
 from threads.views import threads
 
@@ -28,11 +28,11 @@ urlpatterns = [
                   url(r'^register/$', register, name='register'),
                   url(r'^login/$', login, name='login'),
                   url(r'^logout/$', logout, name='logout'),
-                  url(r'^profile/$', profile, name='profile'),
+                  url(r'^profile/(?P<user_id>\d+)$', profile, name='profile'),
+                  url(r'^otherprofile/$', otherprofile, name='otherprofile'),
                   url(r'^loggedin/$', 'accounts.views.edit_profile'),
                   url(r'^search/$', 'accounts.views.search_profile'),
                   url(r'^cancel_subscription/$', cancel_subscription, name='cancel_subscription'),
-
 
                   url(r'^forum/$', 'threads.views.forum'),
                   url(r'^threads/(?P<subject_id>\d+)/$', 'threads.views.threads', name='threads'),

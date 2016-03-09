@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, render_to_response, HttpResponse
+from django.shortcuts import render, redirect, render_to_response, HttpResponse, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -136,6 +136,10 @@ def logout(request):
     auth.logout(request)
     messages.success(request, 'You have logged out')
     return render(request, 'index.html')
+
+
+# def otherprofile(request,subject_id:
+#     subject = get_object_or_404( pk=subject_id)
 
 
 @login_required

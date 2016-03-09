@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
     {% load static %}
+
+
+        <h4 class="modal-title" id="myModalLabel">Last Login: {{ user.last_login }}</h4>
+
+    <div class="searchdiv col-sm-6 col-sm-offset-4">
     <h1>Search</h1>
     {% csrf_token %}
-    <input type="text" id="search" name="search"/>
+
+    <input  type="text" id="search" name="search" placeholder="Search..."/>
     <ul id="search-results">
 
     </ul>
-    <div class="container">
-
-        <!-- Modal -->
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-        <h4 class="modal-title" id="myModalLabel">Last Login: {{ user.last_login }}</h4>
     </div>
-    <div class="modal-body">
+    <div>
         <center>
             {% if user.image %}
             <img src="{{ user.image.url }}" width="140" height="140" border="0" class="img-circle"></a>

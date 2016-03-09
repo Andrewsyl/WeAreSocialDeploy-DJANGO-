@@ -1,13 +1,19 @@
 {% if results.count > 0 %}
 
+
+
 {% for result in results %}
 
-    <li><a href="/profile/{{ result.id }}">{{ result.first_name }}</a> </li>
+     <li style="list-style: none"><a href="/profile/{{ result.id }}">{{ result.first_name }} {{ result.last_name }}</a> </li>
 
 {% endfor %}
 
 {% else %}
 
     <p>Naaaathin here mate</p>
+
+{#{% else %}#}
+
+
 
 {% endif %}
