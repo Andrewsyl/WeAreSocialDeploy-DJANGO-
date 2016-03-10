@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    {% for result in users %}
+    {{ result.id }}
+        <br>
+        {{ result.first_name }}
+        {% if user.image %}
+            <img src="{{ result.image.url }}" width="140" height="140" border="0" class="img-circle">
+                {% else %}
+                <img src="../media/images/defult.jpg" width="240" height="140" border="0" class="img-circle">
+            {% endif %}
+        <br>
+        {{ result.email }}
+    {% endfor %}
+{% endblock %}

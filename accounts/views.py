@@ -20,6 +20,8 @@ stripe.api_key = settings.STRIPE_SECRET
 # Create your views here.
 
 def register(request):
+    if request.user.is_authenticated():
+        return redirect(reverse('profile'))
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -138,8 +140,9 @@ def logout(request):
     return render(request, 'index.html')
 
 
-# def otherprofile(request,subject_id:
-#     subject = get_object_or_404( pk=subject_id)
+def otherprofile(request, id):
+    profiles = User.objects.filter(pk=id)
+    return render(request, 'other_profile.html', {'users': profiles})
 
 
 @login_required
