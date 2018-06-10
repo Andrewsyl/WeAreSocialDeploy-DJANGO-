@@ -6,6 +6,7 @@ MONTH_CHOICES = [(i, i) for i in xrange(1, 13)]
 YEAR_CHOICES = [(i, i) for i in xrange(2015, 2036)]
 
 
+
 class UserRegistrationForm(UserCreationForm):
     password1 = forms.CharField(
         label='Password',
